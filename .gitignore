@@ -385,7 +385,7 @@ FodyWeavers.xsd
 *.code-workspace
 
 # Local History for Visual Studio Code
-.history/
+.history/~
 
 # Windows Installer files from build outputs
 *.cab
@@ -396,3 +396,14 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# env
+.env
+
+# custom adds
+venv
+.vscode
+promptwizard.egg-info/
+demos/scenarios/.env
+demos/scenarios/tcx/TCX_LLM_REVIEW.xlsx
+demos/tcx

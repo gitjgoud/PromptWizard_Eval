@@ -399,11 +399,12 @@ FodyWeavers.xsd
 
 # env
 .env
+**/.env
 
 # custom adds
 venv
+venv2
 .vscode
 promptwizard.egg-info/
 demos/scenarios/.env
-demos/scenarios/tcx/TCX_LLM_REVIEW.xlsx
 demos/tcx

@@ -87,7 +87,10 @@ class DatasetSpecificProcessing(ABC):
         """
         example_string = ""
         for example in examples:
-            answer = example[DatasetSpecificProcessing.FINAL_ANSWER_LITERAL]
+            try:
+                answer = example[DatasetSpecificProcessing.FINAL_ANSWER_LITERAL]
+            except:
+                answer = example[DatasetSpecificProcessing.ANSWER_WITH_REASON_LITERAL]
             if DatasetSpecificProcessing.ANSWER_WITH_REASON_LITERAL in example:
                 answer = example[DatasetSpecificProcessing.ANSWER_WITH_REASON_LITERAL]
 

@@ -263,7 +263,10 @@ class CritiqueNRefine(PromptOptimizer, UniversalBaseClass):
         wrong_examples = []
         for i in range(min(answers_len, dataset_len)):
             print("dataset_subset", dataset_subset)
-            actual_answer = dataset_subset[i][DatasetSpecificProcessing.FINAL_ANSWER_LITERAL]
+            try:
+                actual_answer = dataset_subset[i][DatasetSpecificProcessing.FINAL_ANSWER_LITERAL]
+            except:
+                actual_answer = dataset_subset[i][DatasetSpecificProcessing.ANSWER_WITH_REASON_LITERAL]
             question = dataset_subset[i][DatasetSpecificProcessing.QUESTION_LITERAL]
             is_correct, _ = self.data_processor.access_answer(answer_matches[i], actual_answer)
             if not is_correct:

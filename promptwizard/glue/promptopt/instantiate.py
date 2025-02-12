@@ -138,8 +138,12 @@ class GluePromptOpt:
         total_correct = 0
         total_count = 0
         for json_obj in read_jsonl_row(test_dataset_jsonl):
-            answer = self.predict_and_access(json_obj[DatasetSpecificProcessing.QUESTION_LITERAL],
+            try:
+                answer = self.predict_and_access(json_obj[DatasetSpecificProcessing.QUESTION_LITERAL],
                                              json_obj[DatasetSpecificProcessing.FINAL_ANSWER_LITERAL])
+            except:
+                answer = self.predict_and_access(json_obj[DatasetSpecificProcessing.QUESTION_LITERAL],
+                                             json_obj[DatasetSpecificProcessing.ANSWER_WITH_REASON_LITERAL])
       
             total_correct += answer[self.EvalLiterals.IS_CORRECT]
             total_count += 1

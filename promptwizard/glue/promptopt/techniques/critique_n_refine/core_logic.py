@@ -561,10 +561,13 @@ class CritiqueNRefine(PromptOptimizer, UniversalBaseClass):
         if params.generate_reasoning:
             print("\nGenerating CoT Reasoning for In-Context Examples....")
             for example in tqdm(examples):
+                final_answer = example.get(DatasetSpecificProcessing.FINAL_ANSWER_LITERAL, DatasetSpecificProcessing.ANSWER_WITH_REASON_LITERAL)
+                answer_with_reason = example.get(DatasetSpecificProcessing.ANSWER_WITH_REASON_LITERAL)
                 reason = self.generate_reasoning(params.task_description,
                                                  params.base_instruction,
                                                  example[DatasetSpecificProcessing.QUESTION_LITERAL],
-                                                 example[DatasetSpecificProcessing.FINAL_ANSWER_LITERAL])
+                                                #  example[DatasetSpecificProcessing.FINAL_ANSWER_LITERAL])
+                                                final_answer if final_answer else answer_with_reason)
 
                 example[DatasetSpecificProcessing.ANSWER_WITH_REASON_LITERAL] = f"{reason} " + \
                                                                                 f"{DatasetSpecificProcessing.ANSWER_START}" + \
